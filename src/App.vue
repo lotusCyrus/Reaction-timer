@@ -1,15 +1,27 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <h1>Reaction tiner</h1>
+  <button @click="start" :disabled="isplaying" >Start</button>
+  <Block v-if="isplaying" :delay="delay"/>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import Block from "./components/Block.vue"
 export default {
   name: 'App',
-  components: {
-    HelloWorld
+  components:{Block},
+  data(){
+      return{
+     isplaying:false,
+     delay:null
+      }
+  },
+  methods:{
+      start()
+      {
+         this.isplaying=true
+  
+      }
   }
 }
 </script>
