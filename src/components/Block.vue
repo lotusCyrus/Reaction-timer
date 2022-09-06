@@ -1,6 +1,6 @@
 <template>
     
-    <div class="block" v-if="showblock">
+    <div @click="stopTimer" class="block" v-if="showblock">
         click me
     </div>
     
@@ -21,6 +21,7 @@ mounted()
     setTimeout(()=>{
         this.showblock=true
         this.startTimer()
+      
     }, this.delay)
   },
 
@@ -35,11 +36,14 @@ ummounted(){
 methods:{
     startTimer(){
         this.timer=setInterval(()=>{
-        
-        },this.delay)
+        this.reactionTime +=10
+      
+        },10)
     },
     stopTimer(){
-        
+        clearInterval(this.timer)
+        console.log("reaction time is " + this.reactionTime)
+        this.$emit('end', this.reactionTime)
     }
 }
   }  
