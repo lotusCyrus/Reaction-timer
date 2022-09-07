@@ -1,16 +1,18 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
-  <h1>Reaction tiner</h1>
+  <h1>Reaction timer</h1>
   <button @click="start" :disabled="isplaying" >Start</button>
   <Block v-if="isplaying" :delay="delay" @end="endGame"/>
-  <h3 v-if="result">Raction Time is {{score}} ms!!</h3>
+  <Results v-if="result" :score="score"/>
+  
 </template>
 
 <script>
 import Block from "./components/Block.vue"
+import Results from "./components/Results.vue"
 export default {
   name: 'App',
-  components:{Block},
+  components:{Block, Results},
   data(){
       return{
      isplaying:false,
@@ -44,4 +46,17 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+button{
+    background:#0faf87;
+    border:2px solid #0faf87;
+    border-radius: 5px;
+    color:white;
+    padding: 10px
+}
+button[disabled]
+{
+    opacity: 0.2;
+    cusor:not allowed;
+}
+
 </style>
